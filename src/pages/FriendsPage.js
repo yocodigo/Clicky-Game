@@ -9,13 +9,18 @@ class FriendsPage extends Component {
     friends
   };
 
-  randomOrder = array => {
-    for (let i = array.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i+1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
+  randomOrder = id => {
+    console.log("This is the randomOrder function in FriendsPage.js");
+    // Filter this.state.friends for friends with an id not equal to the id being removed
+    const friendsRandom = this.state.friends.filter(friend => friend.id !== id);
+    // Set this.state.friends equal to the new friends array
+    this.setState({ friends });
+    
   };
+ 
+  onPictureClick = friends =>{
+    console.log("SHUFFLE FRIENDS")
+  }
 
     render() {
       return (
@@ -30,7 +35,9 @@ class FriendsPage extends Component {
               id={friend.id}
               key={friend.id}
               name={friend.name}
-              image={friend.image}
+              image={friend.image} 
+              handleBtnClick={this.onPictureClick}             
+              friends={this.state.friends}
             />
           ))}
         </div>

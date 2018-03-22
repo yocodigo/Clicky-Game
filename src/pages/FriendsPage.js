@@ -9,17 +9,13 @@ class FriendsPage extends Component {
     friends
   };
 
-  randomOrder = id => {
-    console.log("This is the randomOrder function in FriendsPage.js");
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    const friendsRandom = this.state.friends.filter(friend => friend.id !== id);
-    // Set this.state.friends equal to the new friends array
-    this.setState({ friends });
-    
-  };
- 
-  onPictureClick = friends =>{
-    console.log("SHUFFLE FRIENDS")
+  onPictureClick = character =>{
+    console.log("This is the character array unshuffled: ");
+    console.log(character);
+    character.sort();
+    console.log("This is character shuffled: ");
+    console.log(character);
+    // this.setState({ friends });
   }
 
     render() {
@@ -31,7 +27,6 @@ class FriendsPage extends Component {
           </Hero>
           {this.state.friends.map(friend => (
             <FriendCard
-              removeFriend={this.randomOrder}
               id={friend.id}
               key={friend.id}
               name={friend.name}
